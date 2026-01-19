@@ -2,6 +2,7 @@
 -- See `:help mapleader`
 -- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
+vim.g.maplocalleader = "\\"
 
 -- [[ Setting options ]] See `:h vim.o`
 -- NOTE: You can change these options as you wish!
@@ -86,4 +87,8 @@ end, { desc = 'Print the git blame for the current line' })
 -- For example, to add the "nohlsearch" package to automatically turn off search highlighting after
 -- 'updatetime' and when going to insert mode
 vim.cmd('packadd! nohlsearch')
+
+-- Require the lazy.nvim plugin manager
+-- https://github.com/folke/lazy.nvim
+require("config.lazy")
 
