@@ -28,7 +28,12 @@ require("lazy").setup({
           -- optional but recommended
           { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       }
-    }
+    },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate'
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.

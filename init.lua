@@ -102,3 +102,22 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
+-- Setup treesitter
+-- First, install parsers for my favorite languages
+require('nvim-treesitter').install({'c', 'cpp', 'css', 'csv', 'diff',
+  'dockerfile', 'go', 'gomod', 'gosum', 'gotmpl', 'helm', 'java', 'javadoc',
+  'javascript', 'jq', 'json', 'lua', 'make', 'markdown', 'properties',
+  'proto', 'python', 'rego', 'rust', 'sql', 'tsx', 'typescript', 'xml', 'yaml',
+  'zsh'})
+
+-- Then turn on syntax highlighting
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'dockerfile', 'go', 'gomod', 'gosum', 'java', 'lua', 'markdown' },
+  callback = function()
+    -- syntax highlighting, provided by Neovim
+    vim.treesitter.start()
+    -- indentation, provided by nvim-treesitter
+    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end,
+})
+
