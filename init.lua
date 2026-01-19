@@ -91,4 +91,4 @@ vim.cmd('packadd! nohlsearch')
 -- Require the lazy.nvim plugin manager
 -- https://github.com/folke/lazy.nvim
 require("config.lazy")
-
+vim.cmd.colorscheme "catppuccin"
