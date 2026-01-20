@@ -35,8 +35,22 @@ require("lazy").setup({
       build = ':TSUpdate'
     },
     {
-      'mason-org/mason.nvim',
-      opts = {}
+      "mason-org/mason-lspconfig.nvim",
+      opts = {
+        -- Names in this list come from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+        ensure_installed = {
+          "docker_compose_language_service",
+          "docker_language_server",
+          "gopls",
+          "helm_ls",
+          "postgres_lsp",
+          "yamlls"
+        },
+      },
+      dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+      },
     }
   },
   -- Configure any other settings here. See the documentation for more details.
