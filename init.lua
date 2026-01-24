@@ -121,3 +121,11 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Set up conform formatter
+require('conform').setup({
+  formatters_by_ft = {
+    go = { 'gofmt' },
+    lua = { 'stylua' }
+  }
+})
+

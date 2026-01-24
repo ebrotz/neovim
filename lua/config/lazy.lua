@@ -44,6 +44,7 @@ require("lazy").setup({
           "gopls",
           "helm_ls",
           "postgres_lsp",
+          "stylua",
           "yamlls"
         },
       },
@@ -51,6 +52,10 @@ require("lazy").setup({
         { "mason-org/mason.nvim", opts = {} },
         "neovim/nvim-lspconfig",
       },
+    },
+    {
+      'stevearc/conform.nvim',
+      opts = {}
     }
   },
   -- Configure any other settings here. See the documentation for more details.
