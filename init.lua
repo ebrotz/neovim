@@ -1,7 +1,7 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 -- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- [[ Setting options ]] See `:h vim.o`
@@ -20,10 +20,10 @@ vim.o.relativenumber = true
 -- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can
 -- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
 -- See `:help 'clipboard'`
-vim.api.nvim_create_autocmd('UIEnter', {
-  callback = function()
-    vim.o.clipboard = 'unnamedplus'
-  end,
+vim.api.nvim_create_autocmd("UIEnter", {
+	callback = function()
+		vim.o.clipboard = "unnamedplus"
+	end,
 })
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
@@ -46,39 +46,39 @@ vim.o.confirm = true
 -- [[ Set up keymaps ]] See `:h vim.keymap.set()`, `:h mapping`, `:h keycodes`
 
 -- Use <Esc> to exit terminal mode
-vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Map <A-j>, <A-k>, <A-h>, <A-l> to navigate between windows in any modes
-vim.keymap.set({ 't', 'i' }, '<A-h>', '<C-\\><C-n><C-w>h')
-vim.keymap.set({ 't', 'i' }, '<A-j>', '<C-\\><C-n><C-w>j')
-vim.keymap.set({ 't', 'i' }, '<A-k>', '<C-\\><C-n><C-w>k')
-vim.keymap.set({ 't', 'i' }, '<A-l>', '<C-\\><C-n><C-w>l')
-vim.keymap.set({ 'n' }, '<A-h>', '<C-w>h')
-vim.keymap.set({ 'n' }, '<A-j>', '<C-w>j')
-vim.keymap.set({ 'n' }, '<A-k>', '<C-w>k')
-vim.keymap.set({ 'n' }, '<A-l>', '<C-w>l')
+vim.keymap.set({ "t", "i" }, "<A-h>", "<C-\\><C-n><C-w>h")
+vim.keymap.set({ "t", "i" }, "<A-j>", "<C-\\><C-n><C-w>j")
+vim.keymap.set({ "t", "i" }, "<A-k>", "<C-\\><C-n><C-w>k")
+vim.keymap.set({ "t", "i" }, "<A-l>", "<C-\\><C-n><C-w>l")
+vim.keymap.set({ "n" }, "<A-h>", "<C-w>h")
+vim.keymap.set({ "n" }, "<A-j>", "<C-w>j")
+vim.keymap.set({ "n" }, "<A-k>", "<C-w>k")
+vim.keymap.set({ "n" }, "<A-l>", "<C-w>l")
 
 -- [[ Basic Autocommands ]].
 -- See `:h lua-guide-autocommands`, `:h autocmd`, `:h nvim_create_autocmd()`
 
 -- Highlight when yanking (copying) text.
 -- Try it with `yap` in normal mode. See `:h vim.hl.on_yank()`
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  callback = function()
-    vim.hl.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	callback = function()
+		vim.hl.on_yank()
+	end,
 })
 
 -- [[ Create user commands ]]
 -- See `:h nvim_create_user_command()` and `:h user-commands`
 
 -- Create a command `:GitBlameLine` that print the git blame for the current line
-vim.api.nvim_create_user_command('GitBlameLine', function()
-  local line_number = vim.fn.line('.') -- Get the current line number. See `:h line()`
-  local filename = vim.api.nvim_buf_get_name(0)
-  print(vim.fn.system({ 'git', 'blame', '-L', line_number .. ',+1', filename }))
-end, { desc = 'Print the git blame for the current line' })
+vim.api.nvim_create_user_command("GitBlameLine", function()
+	local line_number = vim.fn.line(".") -- Get the current line number. See `:h line()`
+	local filename = vim.api.nvim_buf_get_name(0)
+	print(vim.fn.system({ "git", "blame", "-L", line_number .. ",+1", filename }))
+end, { desc = "Print the git blame for the current line" })
 
 -- [[ Add optional packages ]]
 -- Nvim comes bundled with a set of packages that are not enabled by
@@ -86,46 +86,85 @@ end, { desc = 'Print the git blame for the current line' })
 
 -- For example, to add the "nohlsearch" package to automatically turn off search highlighting after
 -- 'updatetime' and when going to insert mode
-vim.cmd('packadd! nohlsearch')
+vim.cmd("packadd! nohlsearch")
 
 -- Require the lazy.nvim plugin manager
 -- https://github.com/folke/lazy.nvim
 require("config.lazy")
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")
 
 -- Enable telescope
 require("telescope").setup()
 -- Add keybindings for telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- Setup treesitter
 -- First, install parsers for my favorite languages
-require('nvim-treesitter').install({'c', 'cpp', 'css', 'csv', 'diff',
-  'dockerfile', 'go', 'gomod', 'gosum', 'gotmpl', 'helm', 'java', 'javadoc',
-  'javascript', 'jq', 'json', 'lua', 'make', 'markdown', 'properties',
-  'proto', 'python', 'rego', 'rust', 'sql', 'tsx', 'typescript', 'xml', 'yaml',
-  'zsh'})
+require("nvim-treesitter").install({
+	"c",
+	"cpp",
+	"css",
+	"csv",
+	"diff",
+	"dockerfile",
+	"go",
+	"gomod",
+	"gosum",
+	"gotmpl",
+	"helm",
+	"java",
+	"javadoc",
+	"javascript",
+	"jq",
+	"json",
+	"lua",
+	"make",
+	"markdown",
+	"properties",
+	"proto",
+	"python",
+	"rego",
+	"rust",
+	"sql",
+	"tsx",
+	"typescript",
+	"xml",
+	"yaml",
+	"zsh",
+})
 
 -- Then turn on syntax highlighting
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'dockerfile', 'go', 'gomod', 'gosum', 'java', 'lua', 'markdown' },
-  callback = function()
-    -- syntax highlighting, provided by Neovim
-    vim.treesitter.start()
-    -- indentation, provided by nvim-treesitter
-    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-  end,
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "dockerfile", "go", "gomod", "gosum", "java", "lua", "markdown" },
+	callback = function()
+		-- syntax highlighting, provided by Neovim
+		vim.treesitter.start()
+		-- indentation, provided by nvim-treesitter
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
 })
 
 -- Set up conform formatter
-require('conform').setup({
-  formatters_by_ft = {
-    go = { 'gofmt' },
-    lua = { 'stylua' }
-  }
+require("conform").setup({
+	formatters_by_ft = {
+		go = { "gofmt" },
+		lua = { "stylua" },
+	},
 })
+
+vim.api.nvim_create_user_command("Format", function(args)
+	local range = nil
+	if args.count ~= -1 then
+		local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+		range = {
+			start = { args.line1, 0 },
+			["end"] = { args.line2, end_line:len() },
+		}
+	end
+	require("conform").format({ async = true, lsp_format = "fallback", range = range })
+end, { range = true })
 
