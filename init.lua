@@ -149,13 +149,17 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Set up conform formatter
+-- See ':help conform-formatters' for available formatters
 require("conform").setup({
 	formatters_by_ft = {
+		docker = { "dockerfmt" },
 		go = { "gofmt" },
 		lua = { "stylua" },
 	},
 })
 
+-- Create user command 'Format' that formats the current file.
+-- Note that a formatter must be installed for the particular filetype.
 vim.api.nvim_create_user_command("Format", function(args)
 	local range = nil
 	if args.count ~= -1 then
@@ -167,4 +171,3 @@ vim.api.nvim_create_user_command("Format", function(args)
 	end
 	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
-
