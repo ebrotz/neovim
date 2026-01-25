@@ -1,3 +1,7 @@
+-- Disable netrw per nvim-tree recommendation
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 vim.g.mapleader = " "
@@ -172,3 +176,11 @@ end, { range = true })
 
 -- Setup todo-comments
 require("todo-comments").setup()
+
+-- Setup nvim-tree
+require("nvim-tree").setup({
+	on_attach = my_on_attach,
+})
+
+local treeApi = require("nvim-tree.api")
+vim.keymap.set("n", "<leader>b", treeApi.tree.toggle)

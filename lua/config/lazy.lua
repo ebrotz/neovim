@@ -109,7 +109,18 @@ require("lazy").setup({
 		{
 			"folke/todo-comments.nvim",
 			dependencies = { "nvim-lua/plenary.nvim" },
-		}
+		},
+		{
+			"nvim-tree/nvim-tree.lua",
+			version = "*",
+			lazy = false,
+			dependencies = {
+				"nvim-tree/nvim-web-devicons",
+			},
+			config = function()
+				require("nvim-tree").setup({})
+			end,
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
