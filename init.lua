@@ -1,11 +1,9 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
--- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- [[ Setting options ]] See `:h vim.o`
--- NOTE: You can change these options as you wish!
 -- For more options, you can see `:help option-list`
 -- To see documentation for an option, you can use `:h 'optionname'`, for example `:h 'number'`
 -- (Note the single quotes)
@@ -171,3 +169,6 @@ vim.api.nvim_create_user_command("Format", function(args)
 	end
 	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
+
+-- Setup todo-comments
+require("todo-comments").setup()
