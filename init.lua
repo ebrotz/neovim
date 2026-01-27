@@ -7,6 +7,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Set to true if you have a Nerd Font installed and selected
+vim.g.have_nerd_font = true
+
 -- [[ Setting options ]] See `:h vim.o`
 -- For more options, you can see `:help option-list`
 -- To see documentation for an option, you can use `:h 'optionname'`, for example `:h 'number'`
@@ -103,6 +106,8 @@ vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find f
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Telescope references" })
+vim.keymap.set("n", "<leader>fd", builtin.lsp_definitions, { desc = "Telescope definitions" })
 
 -- Setup treesitter
 -- First, install parsers for my favorite languages
@@ -184,3 +189,8 @@ require("nvim-tree").setup({
 
 local treeApi = require("nvim-tree.api")
 vim.keymap.set("n", "<leader>b", treeApi.tree.toggle)
+
+-- Setup toggleterm
+require("toggleterm").setup({
+	open_mapping = "<leader>j"
+})
