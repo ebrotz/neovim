@@ -122,6 +122,23 @@ require("lazy").setup({
 			end,
 		},
 		{ "akinsho/toggleterm.nvim", version = "*", config = true },
+		{
+			"kdheepak/lazygit.nvim",
+			lazy = true,
+			cmd  = {
+				"LazyGit",
+				"LazyGitConfig",
+				"LazyGitCurrentFile",
+				"LazyGitFilter",
+				"LazyGitFilterCurrentFile",
+			},
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+			keys = {
+				{"<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+			},
+		},
 	},
 	-- Configure any other settings here. See the documentation for more details.
 	-- colorscheme that will be used when installing plugins.
