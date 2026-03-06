@@ -191,6 +191,4 @@ local treeApi = require("nvim-tree.api")
 vim.keymap.set("n", "<leader>b", treeApi.tree.toggle)
 
 -- Setup toggleterm
-require("toggleterm").setup({
-	open_mapping = "<leader>j"
-})
+require("toggleterm").setup()
