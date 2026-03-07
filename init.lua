@@ -7,6 +7,10 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+-- Tab handling
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+
 -- Set to true if you have a Nerd Font installed and selected
 vim.g.have_nerd_font = true
 
