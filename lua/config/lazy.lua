@@ -46,6 +46,7 @@ require("lazy").setup({
 					"helm_ls",
 					"postgres_lsp",
 					"stylua",
+					"vtsls",
 					"yamlls",
 				},
 			},
