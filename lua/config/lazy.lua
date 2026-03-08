@@ -19,7 +19,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		-- import your plugins
-		--{ import = "plugins" },
+		{ import = "plugins" },
 		{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 		{
 			"nvim-telescope/telescope.nvim",
