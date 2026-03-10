@@ -41,6 +41,7 @@ require("lazy").setup({
 				-- Names in this list come from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 				ensure_installed = {
 					"cssls",
+					"csharp_ls",
 					"docker_compose_language_service",
 					"docker_language_server",
 					"gopls",
