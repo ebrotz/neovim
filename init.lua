@@ -111,6 +111,7 @@ vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Telescope re
 vim.keymap.set("n", "<leader>fd", builtin.lsp_definitions, { desc = "Telescope definitions" })
 
 -- Setup treesitter
+require 'nvim-treesitter.install'.compilers = { 'clang' }
 -- First, install parsers for my favorite languages
 require("nvim-treesitter").install({
 	"c",
@@ -129,7 +130,6 @@ require("nvim-treesitter").install({
 	"javascript",
 	"jq",
 	"json",
-	"lua",
 	"make",
 	"markdown",
 	"properties",
