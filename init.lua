@@ -118,6 +118,7 @@ require("nvim-treesitter").install({
 	"cpp",
 	"css",
 	"csv",
+	"c_sharp",
 	"diff",
 	"dockerfile",
 	"go",
