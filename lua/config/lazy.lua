@@ -40,6 +40,7 @@ require("lazy").setup({
 			opts = {
 				-- Names in this list come from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 				ensure_installed = {
+					"bicep",
 					"cssls",
 					"csharp_ls",
 					"docker_compose_language_service",
