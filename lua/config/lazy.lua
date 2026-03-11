@@ -38,6 +38,12 @@ require("lazy").setup({
 		{
 			"mason-org/mason-lspconfig.nvim",
 			opts = {
+				-- To install for win_arm64, use the ':MasonInstall --target=win_arm64 <item>'
+				--
+				-- win_arm64 not supported for the following:
+				--     helm_ls: https://github.com/mason-org/mason-registry/blob/main/packages/helm-ls/package.yaml
+				--     stylua: https://github.com/mason-org/mason-registry/blob/main/packages/stylua/package.yaml
+				--
 				-- Names in this list come from https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 				ensure_installed = {
 					"bicep",
@@ -46,9 +52,7 @@ require("lazy").setup({
 					"docker_compose_language_service",
 					"docker_language_server",
 					"gopls",
-					"helm_ls",
 					"postgres_lsp",
-					"stylua",
 					"vtsls",
 					"yamlls",
 				},
