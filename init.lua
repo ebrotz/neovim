@@ -117,7 +117,6 @@ require 'nvim-treesitter.install'.compilers = { 'zig' }
 -- See ':help conform-formatters' for available formatters
 require("conform").setup({
 	formatters_by_ft = {
-		docker = { "dockerfmt" },
 		go = { "gofmt" },
 		lua = { "stylua" },
 	},
