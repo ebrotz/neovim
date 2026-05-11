@@ -121,7 +121,13 @@ require("mason-lspconfig").setup()
 vim.cmd.colorscheme("catppuccin")
 
 -- Enable telescope
-require("telescope").setup()
+require("telescope").setup({
+	pickers = {
+		find_files = {
+			hidden = true
+		}
+	}
+})
 -- Add keybindings for telescope
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
@@ -175,7 +181,11 @@ vim.api.nvim_create_user_command("Format", function(args)
 	require("conform").format({ async = true, lsp_format = "fallback", range = range })
 end, { range = true })
 
-require("oil").setup()
+require("oil").setup({
+	view_options = {
+		show_hidden = true,
+	},
+})
 
 -- LazyGit keymaps
 vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>")
