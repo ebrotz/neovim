@@ -414,3 +414,9 @@ lualine.setup(config)
 local cmp = require("blink.cmp")
 cmp.build():wait(60000)
 cmp.setup()
+
+-- Configure Bicep LSP
+local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.41.2\\Bicep.LangServer.dll"
+vim.lsp.config("bicep", {
+	cmd = {"dotnet", bicep_lsp_bin};
+})
