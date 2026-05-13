@@ -109,9 +109,9 @@ vim.pack.add({
 	"https://github.com/nvim-lualine/lualine.nvim",
 	"https://github.com/nvim-mini/mini.nvim",
 	"https://github.com/stevearc/oil.nvim",
-	"https://github.com/kdheepak/lazygit.nvim",
 	"https://github.com/nvim-telescope/telescope.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
+	"https://github.com/akinsho/toggleterm.nvim",
 })
 
 -- Setup Mason
@@ -176,9 +176,6 @@ vim.api.nvim_create_user_command("Format", function(args)
 end, { range = true })
 
 require("oil").setup()
-
--- LazyGit keymaps
-vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>")
 
 -- Eviline config for lualine
 local lualine = require("lualine")
@@ -404,3 +401,6 @@ lualine.setup(config)
 local cmp = require("blink.cmp")
 cmp.build():wait(60000)
 cmp.setup()
+
+-- Setup toggleterm
+require("toggleterm").setup()
