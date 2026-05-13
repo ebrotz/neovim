@@ -408,3 +408,19 @@ require("toggleterm").setup()
 
 -- Configure Bicep LSP
 vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
+
+-- Keybinds for toggleterm
+local toggleterm = require("toggleterm")
+-- Floating terminal
+vim.keymap.set({ "n" }, "<leader>tn", function()
+	vim.cmd("TermNew direction=float")
+end)
+vim.keymap.set({ "n" }, "<leader>ts", function()
+	vim.cmd("TermSelect")
+end)
+vim.keymap.set({ "n" }, "<leader>ttsn", function()
+	vim.cmd("ToggleTermSetName")
+end)
+vim.keymap.set({ "n" }, "<leader>ttta", function()
+	vim.cmd("ToggleTermToggleAll")
+end)
