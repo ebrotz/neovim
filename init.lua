@@ -125,9 +125,9 @@ vim.cmd.colorscheme("catppuccin")
 require("telescope").setup({
 	pickers = {
 		find_files = {
-			hidden = true
-		}
-	}
+			hidden = true,
+		},
+	},
 })
 -- Add keybindings for telescope
 local builtin = require("telescope.builtin")
@@ -414,28 +414,38 @@ cmp.build():wait(60000)
 cmp.setup()
 
 -- Configure Bicep LSP
-vim.cmd [[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]]
+vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
 local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.41.2\\Bicep.LangServer.dll"
 vim.lsp.config("bicep", {
-	cmd = {"dotnet", bicep_lsp_bin};
+	cmd = { "dotnet", bicep_lsp_bin },
 })
 
 -- Powershell setup for Toggleterm
 local powershell_options = {
-  shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
-  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();",
-  shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
-  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s",
-  shellquote = "",
-  shellxquote = "",
+	shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+	shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();",
+	shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+	shellpipe = "2>&1 | Out-File -Encoding UTF8 %s",
+	shellquote = "",
+	shellxquote = "",
 }
 
 for option, value in pairs(powershell_options) do
-  vim.opt[option] = value
+	vim.opt[option] = value
 end
 
 -- Setup toggleterm
 require("toggleterm").setup({
-  -- Use the global shell option defined above
-  shell = vim.o.shell,
+	-- Use the global shell option defined above
+	shell = vim.o.shell,
 })
+
+-- Keybinds for toggleterm
+local toggleterm = require("toggleterm")
+-- Floating terminal
+vim.keymap.set({ "n" }, "<leader>tn", function()
+	toggleterm.exec("", nil, nil, nil, "float")
+end)
+vim.keymap.set({ "n" }, "<leader>ts", function()
+	vim.cmd("TermSelect")
+end)
