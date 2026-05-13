@@ -416,6 +416,7 @@ cmp.build():wait(60000)
 cmp.setup()
 
 -- Configure Bicep LSP
+vim.cmd [[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]]
 local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.41.2\\Bicep.LangServer.dll"
 vim.lsp.config("bicep", {
 	cmd = {"dotnet", bicep_lsp_bin};
