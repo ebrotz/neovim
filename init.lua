@@ -112,6 +112,7 @@ vim.pack.add({
 	"https://github.com/nvim-telescope/telescope.nvim",
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/akinsho/toggleterm.nvim",
+	"https://github.com/neogitorg/neogit",
 })
 
 -- Setup Mason
