@@ -419,5 +419,23 @@ local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.41.2\\Bicep.
 vim.lsp.config("bicep", {
 	cmd = {"dotnet", bicep_lsp_bin};
 })
+
+-- Powershell setup for Toggleterm
+local powershell_options = {
+  shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();",
+  shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s",
+  shellquote = "",
+  shellxquote = "",
+}
+
+for option, value in pairs(powershell_options) do
+  vim.opt[option] = value
+end
+
 -- Setup toggleterm
-require("toggleterm").setup()
+require("toggleterm").setup({
+  -- Use the global shell option defined above
+  shell = vim.o.shell,
+})
