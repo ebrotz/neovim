@@ -405,3 +405,6 @@ cmp.setup()
 
 -- Setup toggleterm
 require("toggleterm").setup()
+
+-- Configure Bicep LSP
+vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
