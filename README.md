@@ -22,7 +22,10 @@ started:
 | `<leader>ff` | Find file |
 | `<leader>fg` | Find live grep |
 | `<leader>fh` | Find help |
-| `<leader>lg` | Lazygit |
+| `<leader>tn` | New floating terminal |
+| `<leader>ts` | Select terminal |
+| `<leader>ttsn` | Name terminal |
+| `<leader>ttta` | Toggle all terminals |
 
 ## Plugins
 
