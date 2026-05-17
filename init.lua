@@ -424,3 +424,11 @@ end)
 vim.keymap.set({ "n" }, "<leader>ttta", function()
 	vim.cmd("ToggleTermToggleAll")
 end)
+
+-- Add filetypes for vacuum OpenAPI linter
+vim.filetype.add {
+	pattern = {
+		['openapi.*%.ya?ml'] = 'yaml.openapi',
+		['openapi.*%.json'] = 'json.openapi',
+	}
+}
