@@ -113,6 +113,7 @@ vim.pack.add({
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/akinsho/toggleterm.nvim",
 	"https://github.com/neogitorg/neogit",
+	"https://github.com/folke/trouble.nvim",
 })
 
 -- Setup Mason
@@ -410,7 +411,6 @@ require("toggleterm").setup()
 vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
 
 -- Keybinds for toggleterm
-local toggleterm = require("toggleterm")
 -- Floating terminal
 vim.keymap.set({ "n" }, "<leader>tn", function()
 	vim.cmd("TermNew direction=float")
@@ -432,3 +432,5 @@ vim.filetype.add {
 		['openapi.*%.json'] = 'json.openapi',
 	}
 }
+
+require("trouble").setup()
