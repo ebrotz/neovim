@@ -113,6 +113,7 @@ vim.pack.add({
 	"https://github.com/nvim-treesitter/nvim-treesitter",
 	"https://github.com/akinsho/toggleterm.nvim",
 	"https://github.com/neogitorg/neogit",
+	"https://github.com/folke/trouble.nvim",
 })
 
 -- Setup Mason
@@ -413,13 +414,6 @@ local cmp = require("blink.cmp")
 cmp.build():wait(60000)
 cmp.setup()
 
--- Configure Bicep LSP
-vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
-local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.41.2\\Bicep.LangServer.dll"
-vim.lsp.config("bicep", {
-	cmd = { "dotnet", bicep_lsp_bin },
-})
-
 -- Powershell setup for Toggleterm
 local powershell_options = {
 	shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
@@ -440,8 +434,14 @@ require("toggleterm").setup({
 	shell = vim.o.shell,
 })
 
+-- Configure Bicep LSP
+vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
+local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.41.2\\Bicep.LangServer.dll"
+vim.lsp.config("bicep", {
+	cmd = { "dotnet", bicep_lsp_bin },
+})
+
 -- Keybinds for toggleterm
-local toggleterm = require("toggleterm")
 -- Floating terminal
 vim.keymap.set({ "n" }, "<leader>tn", function()
 	vim.cmd("TermNew direction=float")
@@ -455,3 +455,13 @@ end)
 vim.keymap.set({ "n" }, "<leader>ttta", function()
 	vim.cmd("ToggleTermToggleAll")
 end)
+
+-- Add filetypes for vacuum OpenAPI linter
+vim.filetype.add {
+	pattern = {
+		['openapi.*%.ya?ml'] = 'yaml.openapi',
+		['openapi.*%.json'] = 'json.openapi',
+	}
+}
+
+require("trouble").setup()
