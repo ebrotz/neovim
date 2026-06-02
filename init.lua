@@ -114,6 +114,7 @@ vim.pack.add({
 	"https://github.com/akinsho/toggleterm.nvim",
 	"https://github.com/neogitorg/neogit",
 	"https://github.com/folke/trouble.nvim",
+	"https://github.com/sindrets/diffview.nvim",
 })
 
 -- Setup Mason
