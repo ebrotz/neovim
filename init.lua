@@ -437,7 +437,7 @@ require("toggleterm").setup({
 
 -- Configure Bicep LSP
 vim.cmd([[ autocmd BufNewFile,BufRead *.bicep set filetype=bicep ]])
-local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.44.1\\Bicep.LangServer.dll"
+local bicep_lsp_bin = "C:\\Users\\edwardbrotz\\bicep-langserver\\v0.45.15\\Bicep.LangServer.dll"
 vim.lsp.config("bicep", {
 	cmd = { "dotnet", bicep_lsp_bin },
 })
